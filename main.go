@@ -46,7 +46,7 @@ ___  _\_ |__  __ __  _______/  |_  ___________
 			color.Red("Error: No input provided. Please enter a valid command.")
 			continue
 		} else if _input == "help" {
-			color.HiMagenta("Available commands:\n- q: Exit the program\n- help: Show this help message\n- bust <target_url> <wordlist>: Start scanning with the specified target URL and wordlist")
+			color.HiMagenta("Available commands:\n- q: Exit the program\n- help: Show this help message\n- bust <target_url> <wordlist>: Start scanning with the specified target URL and wordlist\n- clear: Clear the console")
 			continue
 		} else if len(_input) > 5 && _input[:5] == "bust " {
 			// Split input by spaces
@@ -103,7 +103,6 @@ ___  _\_ |__  __ __  _______/  |_  ___________
 					} else {
 						color.HiBlue("URL not saved.")
 					}
-					continue
 				} else {
 					color.Red("Not found (%d): %s", resp.StatusCode, url)
 				}
@@ -114,6 +113,8 @@ ___  _\_ |__  __ __  _______/  |_  ___________
 				color.Red("Wordlist read error: %v", err)
 			}
 			continue
+		} else if _input == "clear" {
+			fmt.Print("\033[H\033[2J")
 		} else {
 			color.Red("Unknown command: %s. Type 'help' for available commands.", _input)
 			continue
