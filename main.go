@@ -103,6 +103,7 @@ ___  _\_ |__  __ __  _______/  |_  ___________
 					} else {
 						color.HiBlue("URL not saved.")
 					}
+					continue
 				} else {
 					color.Red("Not found (%d): %s", resp.StatusCode, url)
 				}
